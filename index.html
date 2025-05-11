@@ -113,6 +113,21 @@
 </head>
 <body class="bg-white text-black">
 
+<!-- Password Protection -->
+<script>
+  const correctPassword = 'Avery2010';
+
+  function promptForPassword() {
+    const password = prompt('Please enter the password to view the site:');
+    if (password !== correctPassword) {
+      alert('Incorrect password!');
+      window.location = 'about:blank'; // Redirect to a blank page if incorrect
+    }
+  }
+
+  promptForPassword();
+</script>
+
 <!-- Hero Section -->
 <section class="relative h-[80vh] bg-cover bg-center text-white" style="background-image: url('images/network-connections-banner.jpg'); background-attachment: fixed;">
   <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
