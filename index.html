@@ -138,6 +138,21 @@
   </div>
 </section>
 
+<!-- Password Protection -->
+<script>
+  const correctPassword = 'Avery2010';
+
+  function promptForPassword() {
+    const password = prompt('Please enter the password to view the site:');
+    if (password !== correctPassword) {
+      alert('Incorrect password!');
+      window.location = 'about:blank'; // Redirect to a blank page if incorrect
+    }
+  }
+
+  promptForPassword();
+</script>
+
 <!-- Benefits Section -->
 <section class="py-20 px-6 bg-[#5C76A3] text-center text-white">
   <div class="max-w-4xl mx-auto">
@@ -236,7 +251,7 @@
           <input type="checkbox" id="terms" required class="mr-2" />
           I agree to the
           <a href="pages/terms.html" class="text-[#5C76A3] underline ml-1">Terms of Service</a> and
-          <a href="pages/privacy.html" class="text-[#5C76A3] underline ml-1">Privacy Policy</a>.
+          <a href="pages/privacy.html" class="text-[#5C76A3] underline ml-1">Privacy Policy</a>
         </label>
       </div>
       <button type="submit" class="btn-submit">Sign Up</button>
@@ -244,94 +259,19 @@
   </div>
 </div>
 
-<!-- Supabase + Overlay Logic -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-  // Initialize Supabase
-  const SUPABASE_URL = 'https://mcgchgrdrlcurqjcknyy.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jZ2NoZ3JkcmxjdXJxamNrbnl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4OTc1NjIsImV4cCI6MjA1NTQ3MzU2Mn0.pc5_ZBPfKoLaJtOpCMWFzMx8ZZFDo5KgBS2bBSiLP9M';
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  // Overlay Controls
   function showLoginOverlay() {
-    hideOverlays();
-    document.getElementById('loginOverlay').classList.add('active');
+    document.getElementById("loginOverlay").classList.add("active");
   }
 
   function showSignupOverlay() {
-    hideOverlays();
-    document.getElementById('signupOverlay').classList.add('active');
+    document.getElementById("signupOverlay").classList.add("active");
   }
 
   function hideOverlays() {
-    document.getElementById('loginOverlay').classList.remove('active');
-    document.getElementById('signupOverlay').classList.remove('active');
+    document.getElementById("loginOverlay").classList.remove("active");
+    document.getElementById("signupOverlay").classList.remove("active");
   }
-
-  // Auth Logic
-  document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
-    const signupForm = document.getElementById('signup-form');
-
-    // Login
-    loginForm?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email')?.value;
-      const password = document.getElementById('password')?.value;
-
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
-      if (error) {
-        alert('Login failed: ' + error.message);
-      } else {
-        alert('Welcome back, ' + data.user.email + '!');
-        hideOverlays();
-      }
-    });
-
-    // Signup
-    signupForm?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('signup-email')?.value;
-      const password = document.getElementById('signup-password')?.value;
-      const fullName = document.getElementById('name')?.value;
-      const agreedToTerms = document.getElementById('terms')?.checked;
-
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            full_name: fullName,
-            agreed_to_terms: agreedToTerms
-          }
-        }
-      });
-
-      if (error) {
-        alert('Signup failed: ' + error.message);
-      } else {
-        const userId = data.user?.id;
-        if (userId) {
-          // Manually update the profiles table if needed
-          await supabase
-            .from('profiles')
-            .update({ full_name: fullName, agreed_to_terms: agreedToTerms })
-            .eq('id', userId);
-        }
-
-        alert('Signup successful! Please check your email to confirm your account.');
-        hideOverlays();
-      }
-    });
-
-    // Optional: Check if user is already logged in
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user) {
-        console.log('Already logged in as:', session.user.email);
-      }
-    });
-  });
 </script>
 
 </body>
