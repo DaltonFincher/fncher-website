@@ -153,6 +153,123 @@
   promptForPassword();
 </script>
 
+<!-- Post a Task Section (With End Date Validation, State Dropdown, and Budget Limit) -->
+<section class="py-24 px-6 bg-white text-center text-black">
+  <div class="max-w-2xl mx-auto">
+    <h3 class="text-4xl font-extrabold text-[#5C76A3] mb-6 leading-tight">Post a Task for a Trusted Expert</h3>
+    <p class="text-lg mb-12 text-gray-600 font-medium max-w-lg mx-auto">
+      Need help? Our network of local, licensed real estate experts is ready to assist you. 
+  Once you post a task, it will be seen by trusted agents in your area, who will respond to help you get the job done
+    </p>
+
+    <form class="space-y-6 text-left" id="post-task-form">
+      <div>
+        <label for="task-title" class="block mb-1 font-semibold text-lg text-gray-800">Task Title</label>
+        <input type="text" id="task-title" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required />
+      </div>
+
+      <div>
+        <label for="task-description" class="block mb-1 font-semibold text-lg text-gray-800">Task Description</label>
+        <textarea id="task-description" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" rows="4" placeholder="Describe the task in detail..." required></textarea>
+      </div>
+
+      <div class="flex justify-between space-x-6">
+        <div class="w-1/2">
+          <label for="task-city" class="block mb-1 font-semibold text-lg text-gray-800">City</label>
+          <input type="text" id="task-city" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required />
+        </div>
+        <div class="w-1/2">
+          <label for="task-state" class="block mb-1 font-semibold text-lg text-gray-800">State</label>
+          <select id="task-state" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required>
+            <option value="">Select a state</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="TX">Texas</option>
+            <option value="NY">New York</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="task-budget" class="block mb-1 font-semibold text-lg text-gray-800">Budget (USD)</label>
+        <input
+          type="number"
+          id="task-budget"
+          class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2"
+          required
+          min="1"
+          max="9999"
+          step="1"
+        />
+      </div>
+
+      <div class="flex justify-between space-x-6">
+        <div class="w-1/2">
+          <label for="task-start-date" class="block mb-1 font-semibold text-lg text-gray-800">Start Date</label>
+          <input type="date" id="task-start-date" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required />
+        </div>
+        <div class="w-1/2">
+          <label for="task-end-date" class="block mb-1 font-semibold text-lg text-gray-800">End Date</label>
+          <input type="date" id="task-end-date" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required />
+        </div>
+      </div>
+
+      <div>
+        <label for="task-time" class="block mb-1 font-semibold text-lg text-gray-800">Preferred Start Time</label>
+        <input type="time" id="task-time" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" step="1800" required />
+      </div>
+
+      <button type="submit" class="btn-submit w-full bg-[#5C76A3] text-white py-3 rounded-md font-bold text-lg hover:bg-[#4B5B77] transition">
+        Post Your Task
+      </button>
+    </form>
+  </div>
+</section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const now = new Date();
+    const formatDate = (d) => d.toISOString().split('T')[0];
+
+    const startDateInput = document.getElementById('task-start-date');
+    const endDateInput = document.getElementById('task-end-date');
+    const timeInput = document.getElementById('task-time');
+    const budgetInput = document.getElementById('task-budget');
+
+    const todayStr = formatDate(now);
+    startDateInput.value = todayStr;
+    startDateInput.min = todayStr;
+    endDateInput.value = todayStr;
+    endDateInput.min = todayStr;
+
+    // Adjust time to next half-hour
+    let minutes = now.getMinutes();
+    let roundedMinutes = minutes < 30 ? 30 : 0;
+    let nextHour = minutes < 30 ? now.getHours() : now.getHours() + 1;
+    let timeString = `${String(nextHour).padStart(2, '0')}:${String(roundedMinutes).padStart(2, '0')}`;
+    timeInput.value = timeString;
+
+    // Ensure end date is not before start date
+    startDateInput.addEventListener('change', () => {
+      const startDate = new Date(startDateInput.value);
+      const startStr = formatDate(startDate);
+      endDateInput.min = startStr;
+
+      if (new Date(endDateInput.value) < startDate) {
+        endDateInput.value = startStr;
+      }
+    });
+
+    // Clean budget input: only valid integers between 1 and 9999, remove leading zeros
+    budgetInput.addEventListener('input', () => {
+      let value = budgetInput.value.replace(/\D/g, ''); // Remove non-numeric
+      value = value.replace(/^0+/, ''); // Remove leading zeros
+      if (value > 9999) value = 9999;
+      budgetInput.value = value;
+    });
+  });
+</script>
+
 <!-- Benefits Section -->
 <section class="py-20 px-6 bg-[#5C76A3] text-center text-white">
   <div class="max-w-4xl mx-auto">
@@ -197,6 +314,19 @@
         <p>Restock basics like milk, eggs, and bread before you return home.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Become a Fncher Agent Section -->
+<section class="bg-white py-24 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h3 class="text-4xl font-bold text-[#5C76A3] mb-6">Want to Become a Fncher Agent?</h3>
+    <p class="text-lg text-gray-700 mb-8">
+      Join the Fncher network and start offering trusted home services to homeowners. As a licensed real estate professional, you can expand your business, gain new clients, and build a stronger presence in your community.
+    </p>
+    <a href="sign-up.html" class="inline-block bg-[#5C76A3] text-white py-3 px-6 text-xl font-semibold rounded-lg hover:bg-white hover:text-[#5C76A3] hover:shadow-xl transition duration-300 ease-in-out">
+      Sign Up as a Fncher Agent
+    </a>
   </div>
 </section>
 
