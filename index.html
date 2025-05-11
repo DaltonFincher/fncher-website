@@ -113,21 +113,6 @@
 </head>
 <body class="bg-white text-black">
 
-<!-- Password Protection -->
-<script>
-  const correctPassword = 'Avery2010';
-
-  function promptForPassword() {
-    const password = prompt('Please enter the password to view the site:');
-    if (password !== correctPassword) {
-      alert('Incorrect password!');
-      window.location = 'about:blank'; // Redirect to a blank page if incorrect
-    }
-  }
-
-  promptForPassword();
-</script>
-
 <!-- Hero Section -->
 <section class="relative h-[80vh] bg-cover bg-center text-white" style="background-image: url('images/network-connections-banner.jpg'); background-attachment: fixed;">
   <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
@@ -226,10 +211,12 @@
   <div class="login-card">
     <span class="close-btn" onclick="hideOverlays()">×</span>
     <h2>Log in to Your Account</h2>
-    <p class="text-sm mb-6">Not a member yet? <a href="javascript:void(0);" onclick="showSignupOverlay()" class="link-text">Create an account</a></p>
-    <form action="#" method="POST">
-      <input type="email" id="email" name="email" class="input-field" placeholder="Enter your email" required />
-      <input type="password" id="password" name="password" class="input-field" placeholder="Enter your password" required />
+    <p class="text-sm mb-6">Not a member yet? 
+      <a href="javascript:void(0);" onclick="showSignupOverlay()" class="link-text">Create an account</a>
+    </p>
+    <form id="login-form" method="POST">
+      <input type="email" id="email" class="input-field" placeholder="Enter your email" required />
+      <input type="password" id="password" class="input-field" placeholder="Enter your password" required />
       <button type="submit" class="btn-submit">Log In</button>
     </form>
   </div>
@@ -240,13 +227,13 @@
   <div class="login-card">
     <span class="close-btn" onclick="hideOverlays()">×</span>
     <h2>Create Your Account</h2>
-    <form action="#" method="POST">
-      <input type="text" id="name" name="name" class="input-field" placeholder="Full Name" required />
-      <input type="email" id="signup-email" name="email" class="input-field" placeholder="Email" required />
-      <input type="password" id="signup-password" name="password" class="input-field" placeholder="Password" required />
+    <form id="signup-form" method="POST">
+      <input type="text" id="name" class="input-field" placeholder="Full Name" required />
+      <input type="email" id="signup-email" class="input-field" placeholder="Email" required />
+      <input type="password" id="signup-password" class="input-field" placeholder="Password" required />
       <div class="text-left text-sm mb-4">
         <label class="inline-flex items-center">
-          <input type="checkbox" required class="mr-2" />
+          <input type="checkbox" id="terms" required class="mr-2" />
           I agree to the
           <a href="pages/terms.html" class="text-[#5C76A3] underline ml-1">Terms of Service</a> and
           <a href="pages/privacy.html" class="text-[#5C76A3] underline ml-1">Privacy Policy</a>.
@@ -257,8 +244,15 @@
   </div>
 </div>
 
-<!-- Scripts -->
+<!-- Supabase + Overlay Logic -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
+  // Initialize Supabase
+  const SUPABASE_URL = 'https://mcgchgrdrlcurqjcknyy.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jZ2NoZ3JkcmxjdXJxamNrbnl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4OTc1NjIsImV4cCI6MjA1NTQ3MzU2Mn0.pc5_ZBPfKoLaJtOpCMWFzMx8ZZFDo5KgBS2bBSiLP9M';
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Overlay Controls
   function showLoginOverlay() {
     hideOverlays();
     document.getElementById('loginOverlay').classList.add('active');
@@ -273,6 +267,71 @@
     document.getElementById('loginOverlay').classList.remove('active');
     document.getElementById('signupOverlay').classList.remove('active');
   }
+
+  // Auth Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+
+    // Login
+    loginForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email')?.value;
+      const password = document.getElementById('password')?.value;
+
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        alert('Login failed: ' + error.message);
+      } else {
+        alert('Welcome back, ' + data.user.email + '!');
+        hideOverlays();
+      }
+    });
+
+    // Signup
+    signupForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('signup-email')?.value;
+      const password = document.getElementById('signup-password')?.value;
+      const fullName = document.getElementById('name')?.value;
+      const agreedToTerms = document.getElementById('terms')?.checked;
+
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+            agreed_to_terms: agreedToTerms
+          }
+        }
+      });
+
+      if (error) {
+        alert('Signup failed: ' + error.message);
+      } else {
+        const userId = data.user?.id;
+        if (userId) {
+          // Manually update the profiles table if needed
+          await supabase
+            .from('profiles')
+            .update({ full_name: fullName, agreed_to_terms: agreedToTerms })
+            .eq('id', userId);
+        }
+
+        alert('Signup successful! Please check your email to confirm your account.');
+        hideOverlays();
+      }
+    });
+
+    // Optional: Check if user is already logged in
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        console.log('Already logged in as:', session.user.email);
+      }
+    });
+  });
 </script>
 
 </body>
