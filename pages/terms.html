@@ -2,114 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Service – Fncher</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="../Fncherlogo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Service | Fncher</title>
+  <link rel="stylesheet" href="../styles.css"/>
+  <style>
+    :root {
+      --primary-color: #5C76A3;
+      --text-color: #333;
+      --background-color: #fff;
+      --max-width: 900px;
+      --padding: 2rem;
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem var(--padding);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .back-button {
+      background-color: white;
+      color: var(--primary-color);
+      border: 2px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: var(--primary-color);
+      color: white;
+      border: 2px solid white;
+    }
+
+    .content {
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      padding: 0 var(--padding);
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      color: var(--primary-color);
+      margin-top: 2rem;
+      font-size: 1.25rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        padding: 0 1rem;
+      }
+
+      .back-button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-white text-black font-sans" style="font-family: 'Roboto', sans-serif;">
+<body>
+  <nav class="navbar">
+    <h1>Fncher</h1>
+    <a href="../../index.html" class="back-button">← Back</a>
+  </nav>
+  <main class="content">
+    <h2>Terms of Service</h2>
+    <p><em>Effective Date: May 12, 2025</em></p>
 
-  <!-- Header Section with Nav -->
-<section class="relative bg-[#5C76A3] text-white h-[40vh] shadow-md">
-  <!-- Navigation -->
-  <div class="relative z-10 flex justify-between items-center px-6 sm:px-12 pt-6">
-    <h1 class="text-3xl sm:text-4xl font-bold tracking-wide">Fncher</h1>
-    <nav class="space-x-3 sm:space-x-6">
-      <a href="../index.html"
-         class="bg-white text-[#5C76A3] px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:bg-gray-100 transition duration-200 shadow-sm">
-        Home
-      </a>
-      <a href="contact.html"
-         class="bg-white text-[#5C76A3] px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:bg-gray-100 transition duration-200 shadow-sm">
-        Contact
-      </a>
-    </nav>
-  </div>
+    <h3>1. Overview</h3>
+    <p>Fncher is a platform that connects homeowners with licensed real estate agents in Florida to complete local household tasks. By using Fncher, you agree to be bound by these Terms of Service and any future updates posted on this page.</p>
 
-  <!-- Page Title -->
-  <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6">
-    <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">Terms of Service</h2>
-    <p class="mt-2 text-sm sm:text-base font-light text-white/90">Updated as of May 2025</p>
-  </div>
-</section>
+    <h3>2. User Roles</h3>
+    <ul>
+      <li><strong>Homeowners:</strong> May post tasks and hire licensed agents. They are responsible for accurate descriptions and fair practices.</li>
+      <li><strong>Agents:</strong> Must be verified Florida-licensed real estate professionals and are responsible for adhering to all relevant regulations and ethical guidelines.</li>
+    </ul>
 
-  <!-- Terms Content -->
-  <section class="py-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <p class="text-lg mb-6">
-        Welcome to Fncher! These terms and conditions outline the rules and regulations for the use of our website, Fncher.com.
-      </p>
+    <h3>3. Independent Contractor Disclaimer</h3>
+    <p>All agents are independent contractors. Fncher is not a party to any agreement between homeowners and agents and does not supervise, direct, or control the services rendered by agents.</p>
 
-      <div class="space-y-8 text-base leading-relaxed">
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">1. Acceptance of Terms</h3>
-          <p>By accessing and using the services provided by Fncher, you accept and agree to be bound by the terms and conditions set forth in this agreement. If you do not agree to these terms, you should not use our services.</p>
-        </div>
+    <h3>4. User Responsibilities</h3>
+    <ul>
+      <li>Provide honest and accurate information during registration and task posting.</li>
+      <li>Maintain respectful and lawful interactions with other users.</li>
+      <li>Not engage in discriminatory, abusive, or fraudulent behavior on the platform.</li>
+      <li>Comply with all applicable laws and regulations in your use of Fncher.</li>
+    </ul>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">2. Services We Provide</h3>
-          <p>Fncher provides a platform that connects homeowners with licensed real estate agents and service professionals for various home services. This includes house sitting, pet care, storm prep, and more.</p>
-        </div>
+    <h3>5. Payments and Service Fees</h3>
+    <p>Payments are processed via a secure third-party service. Fncher may charge a non-refundable platform fee. Users agree not to bypass the platform to avoid fees.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">3. Use of Our Website</h3>
-          <p>You agree to use the website only for lawful purposes and in a manner that does not infringe the rights or restrict the use of others.</p>
-        </div>
+    <h3>6. Reviews and Content</h3>
+    <p>Users may leave ratings and reviews. Fncher reserves the right to remove inappropriate or malicious content. Reviews do not represent the views of Fncher.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">4. User Account</h3>
-          <p>You may need to create an account to use certain features. You are responsible for keeping your credentials secure.</p>
-        </div>
+    <h3>7. Account Termination</h3>
+    <p>Fncher may suspend or terminate accounts at its sole discretion for violations of these Terms, misuse of the platform, or illegal activity. Terminated users may not re-register without express permission.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">5. Payment & Fees</h3>
-          <p>All service-related payments are processed through the platform. Users agree to all applicable charges. Refer to our Payment Policy for more.</p>
-        </div>
+    <h3>8. Intellectual Property</h3>
+    <p>All content, branding, and features on Fncher are owned or licensed by Fncher and protected by intellectual property laws. Users may not copy, modify, or distribute content without permission.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">6. Privacy & Data Protection</h3>
-          <p>Your privacy is important to us. Please read our Privacy Policy to understand how your data is handled.</p>
-        </div>
+    <h3>9. Limitation of Liability</h3>
+    <p>Fncher is not responsible for any indirect, incidental, or consequential damages. Use of the platform is at your own risk. We do not guarantee the quality, safety, or legality of services performed.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">7. Limitation of Liability</h3>
-          <p>Fncher is not liable for any damages or losses resulting from use or inability to use our services.</p>
-        </div>
+    <h3>10. Indemnification</h3>
+    <p>You agree to defend, indemnify, and hold harmless Fncher and its affiliates, officers, directors, and agents from and against any claims, liabilities, damages, losses, and expenses arising out of or in any way connected with your use of the platform.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">8. Termination</h3>
-          <p>We may suspend or terminate your access to the site if you violate these terms, without prior notice.</p>
-        </div>
+    <h3>11. Dispute Resolution</h3>
+    <p>Users agree to attempt informal resolution before initiating any legal claims. If unresolved, disputes will be handled through binding arbitration in Florida, unless otherwise required by law.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">9. Governing Law</h3>
-          <p>These terms are governed by Florida law. Legal disputes will be handled in Florida courts.</p>
-        </div>
+    <h3>12. Changes to Terms</h3>
+    <p>Fncher reserves the right to modify these Terms at any time. Continued use of the platform after changes means you accept the updated Terms. We encourage users to review this page periodically.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">10. Changes to Terms</h3>
-          <p>We reserve the right to update these Terms of Service at any time. Changes will be posted here, and continued use implies acceptance.</p>
-        </div>
+    <h3>13. Governing Law</h3>
+    <p>These Terms are governed by and construed in accordance with the laws of the State of Florida, without regard to its conflict of law principles. Any legal action must be brought in courts located in Florida.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">11. Contact Us</h3>
-          <p>If you have any questions about these terms, contact us at <a href="mailto:contact@fncher.com" class="text-[#5C76A3] underline">contact@fncher.com</a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white text-center py-6">
-    <div class="space-x-6 mb-4">
-      <a href="terms.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Terms</a>
-      <a href="privacy.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Privacy</a>
-      <a href="contact.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Contact</a>
-      <a href="accessibility.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Accessibility</a>
-    </div>
-    <p class="text-sm">&copy; 2025 Fncher™. All Rights Reserved.</p>
-  </footer>
-
+    <h3>14. Contact</h3>
+    <p>If you have any questions, contact us at <a href="mailto:contactfncher@gmail.com">contactfncher@gmail.com</a>.</p>
+  </main>
 </body>
 </html>

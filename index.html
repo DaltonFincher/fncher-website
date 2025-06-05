@@ -2,407 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fncher – Trusted Home Experts</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="Fncherlogo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Roboto', sans-serif;
     }
-
     .navbar {
       background-color: #5C76A3;
       color: white;
       padding: 10px 20px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
     }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 50;
-    }
-
-    .overlay.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .login-card {
-      background-color: white;
-      color: black;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-      margin-top: 50px;
-      position: relative;
-    }
-
-    .login-card h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .input-field {
-      background-color: #f5f5f5;
-      color: #5C76A3;
-      border: 1px solid #5C76A3;
-      padding: 12px;
-      width: 100%;
-      margin-bottom: 20px;
-      border-radius: 8px;
-    }
-
-    .input-field:focus {
-      outline: none;
-      border-color: #5C76A3;
-    }
-
-    .btn-submit {
-      background-color: #5C76A3;
-      color: white;
-      padding: 12px;
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .btn-submit:hover {
-      background-color: #4A5E7B;
-    }
-
-    .link-text {
-      font-size: 1rem;
-      color: #5C76A3;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .link-text:hover {
-      text-decoration: underline;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
-      cursor: pointer;
-      color: #5C76A3;
-      font-weight: bold;
+    input, textarea {
+      border: 1px solid #ccc;
     }
   </style>
 </head>
 <body class="bg-white text-black">
 
-<!-- Hero Section -->
-<section class="relative h-[80vh] bg-cover bg-center text-white" style="background-image: url('images/network-connections-banner.jpg'); background-attachment: fixed;">
-  <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
-
-  <div class="relative z-10 flex justify-between items-center px-6 sm:px-10 pt-6">
-    <h1 class="text-4xl sm:text-5xl font-bold text-white tracking-wide">Fncher</h1>
-    <div class="space-x-4">
-      <button onclick="showLoginOverlay()" class="bg-white text-[#5C76A3] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100">Log In</button>
-      <button onclick="showSignupOverlay()" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg font-semibold hover:bg-white hover:text-[#5C76A3]">Sign Up</button>
-    </div>
-  </div>
-
-  <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6">
-    <h2 class="text-4xl sm:text-6xl font-extrabold leading-tight max-w-4xl">
-      Homeowners, Meet Verified Local Experts
-    </h2>
-    <p class="text-lg sm:text-xl mt-6 max-w-2xl leading-relaxed">
-      Need help while you're away? <strong>Fncher connects homeowners with licensed, trusted real estate agents</strong> who provide home care, pet sitting, and more—so you can leave with confidence.
+ <!-- Hero Section -->
+<section 
+  class="relative h-screen bg-cover bg-center text-white flex items-center" 
+  style="background-image: url('images/network-connections-banner.jpg'); background-attachment: fixed;"
+>
+  <div class="absolute inset-0 bg-black bg-opacity-85 z-0"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight drop-shadow-lg animate-fadeIn">
+      Fncher
+    </h1>
+    <p class="mt-8 text-2xl md:text-3xl font-medium max-w-3xl mx-auto leading-relaxed animate-fadeIn delay-200">
+      Need help with your home while you're away? I’m Dalton Fincher, a licensed realtor and trusted local expert here to help.
     </p>
-    <a href="javascript:void(0);" onclick="showLoginOverlay()" class="mt-10 inline-block bg-[#5C76A3] text-white px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:bg-white hover:text-[#5C76A3] hover:shadow-xl transition duration-300 ease-in-out">
-      Book Your Expert
+    <p class="mt-6 text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed animate-fadeIn delay-400">
+      Whether it’s pet sitting, watering plants, or simple tasks — send me your request and I’ll take care of it personally.
+    </p>
+    <a 
+      href="mailto:contactfncher@gmail.com" 
+      class="inline-block mt-12 bg-white text-[#5C76A3] px-8 py-4 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition duration-300 animate-fadeIn delay-600"
+      aria-label="Contact Dalton"
+    >
+      Contact Dalton
     </a>
   </div>
-</section>
 
-<!-- Password Protection -->
-<script>
-  const correctPassword = 'Avery2010';
-
-  function promptForPassword() {
-    const password = prompt('Please enter the password to view the site:');
-    if (password !== correctPassword) {
-      alert('Incorrect password!');
-      window.location = 'about:blank'; // Redirect to a blank page if incorrect
+  <style>
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
     }
-  }
-
-  promptForPassword();
-</script>
-
-<!-- Post a Task Section (With End Date Validation, State Dropdown, and Budget Limit) -->
-<section class="py-24 px-6 bg-white text-center text-black">
-  <div class="max-w-2xl mx-auto">
-    <h3 class="text-4xl font-extrabold text-[#5C76A3] mb-6 leading-tight">Post a Task for a Trusted Expert</h3>
-    <p class="text-lg mb-12 text-gray-600 font-medium max-w-lg mx-auto">
-      Need help? Our network of local, licensed real estate experts is ready to assist you. 
-  Once you post a task, it will be seen by trusted agents in your area, who will respond to help you get the job done
-    </p>
-
-    <form class="space-y-6 text-left" id="post-task-form">
-      <div>
-        <label for="task-title" class="block mb-1 font-semibold text-lg text-gray-800">Task Title</label>
-        <input type="text" id="task-title" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required />
-      </div>
-
-      <div>
-        <label for="task-description" class="block mb-1 font-semibold text-lg text-gray-800">Task Description</label>
-        <textarea id="task-description" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" rows="4" placeholder="Describe the task in detail..." required></textarea>
-      </div>
-
-      <div class="flex justify-between space-x-6">
-        <div class="w-1/2">
-          <label for="task-city" class="block mb-1 font-semibold text-lg text-gray-800">City</label>
-          <input type="text" id="task-city" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required />
-        </div>
-        <div class="w-1/2">
-          <label for="task-state" class="block mb-1 font-semibold text-lg text-gray-800">State</label>
-          <select id="task-state" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required>
-            <option value="">Select a state</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="TX">Texas</option>
-            <option value="NY">New York</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <label for="task-budget" class="block mb-1 font-semibold text-lg text-gray-800">Budget (USD)</label>
-        <input
-          type="number"
-          id="task-budget"
-          class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2"
-          required
-          min="1"
-          max="9999"
-          step="1"
-        />
-      </div>
-
-      <div class="flex justify-between space-x-6">
-        <div class="w-1/2">
-          <label for="task-start-date" class="block mb-1 font-semibold text-lg text-gray-800">Start Date</label>
-          <input type="date" id="task-start-date" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required />
-        </div>
-        <div class="w-1/2">
-          <label for="task-end-date" class="block mb-1 font-semibold text-lg text-gray-800">End Date</label>
-          <input type="date" id="task-end-date" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" required />
-        </div>
-      </div>
-
-      <div>
-        <label for="task-time" class="block mb-1 font-semibold text-lg text-gray-800">Preferred Start Time</label>
-        <input type="time" id="task-time" class="input-field w-full text-black border-2 border-gray-300 rounded-md p-2" step="1800" required />
-      </div>
-
-      <button type="submit" class="btn-submit w-full bg-[#5C76A3] text-white py-3 rounded-md font-bold text-lg hover:bg-[#4B5B77] transition">
-        Post Your Task
-      </button>
-    </form>
-  </div>
+    .animate-fadeIn {
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-600 { animation-delay: 0.6s; }
+  </style>
 </section>
 
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const now = new Date();
-    const formatDate = (d) => d.toISOString().split('T')[0];
+  <!-- Task Submission Form -->
+  <section class="py-20 px-6 bg-[#f7f9fc] text-black">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-extrabold text-[#5C76A3] mb-6">Submit a Task for Dalton</h2>
+      <p class="text-lg mb-10 text-gray-700">Fill out this form and I’ll get back to you personally.</p>
 
-    const startDateInput = document.getElementById('task-start-date');
-    const endDateInput = document.getElementById('task-end-date');
-    const timeInput = document.getElementById('task-time');
-    const budgetInput = document.getElementById('task-budget');
+      <form action="https://formsubmit.co/contactfncher@gmail.com" method="POST" class="grid gap-6">
+        <!-- Hidden Fields for FormSubmit -->
+        <input type="hidden" name="_subject" value="New Fncher Task Submission" />
+        <input type="hidden" name="_captcha" value="false" />
+       <input type="hidden" name="_next" value="https://fncher.com/thanks.html" />
 
-    const todayStr = formatDate(now);
-    startDateInput.value = todayStr;
-    startDateInput.min = todayStr;
-    endDateInput.value = todayStr;
-    endDateInput.min = todayStr;
+        <!-- Input Fields -->
+        <input type="text" name="name" required placeholder="Your Full Name" class="p-4 rounded-lg" />
+        <input type="email" name="email" required placeholder="Your Email Address" class="p-4 rounded-lg" />
+        <input type="tel" name="phone" placeholder="Your Phone Number (Optional)" class="p-4 rounded-lg" />
+        <textarea name="task" required rows="5" placeholder="Describe the task you need help with..." class="p-4 rounded-lg resize-none"></textarea>
 
-    // Adjust time to next half-hour
-    let minutes = now.getMinutes();
-    let roundedMinutes = minutes < 30 ? 30 : 0;
-    let nextHour = minutes < 30 ? now.getHours() : now.getHours() + 1;
-    let timeString = `${String(nextHour).padStart(2, '0')}:${String(roundedMinutes).padStart(2, '0')}`;
-    timeInput.value = timeString;
-
-    // Ensure end date is not before start date
-    startDateInput.addEventListener('change', () => {
-      const startDate = new Date(startDateInput.value);
-      const startStr = formatDate(startDate);
-      endDateInput.min = startStr;
-
-      if (new Date(endDateInput.value) < startDate) {
-        endDateInput.value = startStr;
-      }
-    });
-
-    // Clean budget input: only valid integers between 1 and 9999, remove leading zeros
-    budgetInput.addEventListener('input', () => {
-      let value = budgetInput.value.replace(/\D/g, ''); // Remove non-numeric
-      value = value.replace(/^0+/, ''); // Remove leading zeros
-      if (value > 9999) value = 9999;
-      budgetInput.value = value;
-    });
-  });
-</script>
-
-<!-- Benefits Section -->
-<section class="py-20 px-6 bg-[#5C76A3] text-center text-white">
-  <div class="max-w-4xl mx-auto">
-    <h3 class="text-4xl font-bold">Why Homeowners Love Fncher</h3>
-    <p class="text-lg mt-6">
-      Whether you're traveling or just need an extra hand, our <strong>verified real estate professionals</strong> offer trusted home services. From home check-ins to pet sitting, we've got you covered—<strong>all with the reliability of licensed agents.</strong>
-    </p>
-  </div>
-</section>
-
-<!-- Services Grid -->
-<section class="bg-gray-50 py-20 px-6">
-  <div class="max-w-6xl mx-auto">
-    <h3 class="text-4xl font-bold text-center text-[#5C76A3] mb-12">What We Offer</h3>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">House Sitting & Home Checks</h4>
-        <p>Quick walkthroughs to ensure everything is safe, secure, and in order.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Mail & Package Collection</h4>
-        <p>We bring in mail and packages so nothing piles up or gets stolen.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Trash Bin Takeout & Return</h4>
-        <p>Take bins to the curb on pickup day and return them afterward.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Dog Walking & Pet Sitting</h4>
-        <p>Daily walks, feeding, and care for your pets while you're gone.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Watering Plants</h4>
-        <p>We’ll keep your indoor and outdoor plants healthy and happy.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Storm Prep & Property Watch</h4>
-        <p>Secure items, inspect damage after storms, and send updates.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Grocery Restock</h4>
-        <p>Restock basics like milk, eggs, and bread before you return home.</p>
-      </div>
+        <!-- Submit -->
+        <button type="submit" class="bg-[#5C76A3] text-white py-4 rounded-lg font-semibold hover:bg-[#4b618c] transition">
+          Send Request
+        </button>
+      </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Become a Fncher Agent Section -->
-<section class="bg-white py-24 px-6">
-  <div class="max-w-4xl mx-auto text-center">
-    <h3 class="text-4xl font-bold text-[#5C76A3] mb-6">Want to Become a Fncher Agent?</h3>
-    <p class="text-lg text-gray-700 mb-8">
-      Join the Fncher network and start offering trusted home services to homeowners. As a licensed real estate professional, you can expand your business, gain new clients, and build a stronger presence in your community.
-    </p>
-    <a href="sign-up.html" class="inline-block bg-[#5C76A3] text-white py-3 px-6 text-xl font-semibold rounded-lg hover:bg-white hover:text-[#5C76A3] hover:shadow-xl transition duration-300 ease-in-out">
-      Sign Up as a Fncher Agent
-    </a>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="bg-[#5C76A3] text-white text-center py-24 px-6">
-  <h3 class="text-4xl font-bold">Start Today</h3>
-  <p class="text-lg mt-4 max-w-3xl mx-auto">
-    Whether you're a homeowner looking for trusted professionals or an agent ready to expand your business, Fncher makes it easy.
-  </p>
-  <a href="mailto:contactfncher@gmail.com" class="mt-6 inline-block bg-white text-[#5C76A3] py-3 px-6 text-xl font-semibold rounded-lg hover:bg-gray-100 transition">
-    Contact Us
-  </a>
-</section>
-
-<!-- Footer -->
-<footer class="bg-gray-900 text-white text-center py-6">
-  <div class="space-x-6 mb-4">
-    <a href="pages/terms.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Terms</a>
-    <a href="pages/privacy.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Privacy</a>
-    <a href="pages/accessibility.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Accessibility</a>
-  </div>
-  <p class="text-sm">&copy; 2025 Fncher™. All Rights Reserved.</p>
-</footer>
-
-<!-- Login Overlay -->
-<div id="loginOverlay" class="overlay">
-  <div class="login-card">
-    <span class="close-btn" onclick="hideOverlays()">×</span>
-    <h2>Log in to Your Account</h2>
-    <p class="text-sm mb-6">Not a member yet? 
-      <a href="javascript:void(0);" onclick="showSignupOverlay()" class="link-text">Create an account</a>
-    </p>
-    <form id="login-form" method="POST">
-      <input type="email" id="email" class="input-field" placeholder="Enter your email" required />
-      <input type="password" id="password" class="input-field" placeholder="Enter your password" required />
-      <button type="submit" class="btn-submit">Log In</button>
-    </form>
-  </div>
-</div>
-
-<!-- Signup Overlay -->
-<div id="signupOverlay" class="overlay">
-  <div class="login-card">
-    <span class="close-btn" onclick="hideOverlays()">×</span>
-    <h2>Create Your Account</h2>
-    <form id="signup-form" method="POST">
-      <input type="text" id="name" class="input-field" placeholder="Full Name" required />
-      <input type="email" id="signup-email" class="input-field" placeholder="Email" required />
-      <input type="password" id="signup-password" class="input-field" placeholder="Password" required />
-      <div class="text-left text-sm mb-4">
-        <label class="inline-flex items-center">
-          <input type="checkbox" id="terms" required class="mr-2" />
-          I agree to the
-          <a href="pages/terms.html" class="text-[#5C76A3] underline ml-1">Terms of Service</a> and
-          <a href="pages/privacy.html" class="text-[#5C76A3] underline ml-1">Privacy Policy</a>
-        </label>
-      </div>
-      <button type="submit" class="btn-submit">Sign Up</button>
-    </form>
-  </div>
-</div>
-
-<script>
-  function showLoginOverlay() {
-    document.getElementById("loginOverlay").classList.add("active");
-  }
-
-  function showSignupOverlay() {
-    document.getElementById("signupOverlay").classList.add("active");
-  }
-
-  function hideOverlays() {
-    document.getElementById("loginOverlay").classList.remove("active");
-    document.getElementById("signupOverlay").classList.remove("active");
-  }
-</script>
+  <!-- Footer -->
+  <footer class="text-center py-6 text-sm text-gray-500">
+    © 2025 Fncher – Dalton Fincher | Licensed Realtor | Saint Augustine, FL
+  </footer>
 
 </body>
-</html> 
+</html>

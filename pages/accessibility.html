@@ -2,77 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accessibility – Fncher</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="../Fncherlogo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accessibility | Fncher</title>
+  <link rel="stylesheet" href="../styles.css"/>
+  <style>
+    :root {
+      --primary-color: #5C76A3;
+      --text-color: #333;
+      --background-color: #fff;
+      --max-width: 900px;
+      --padding: 2rem;
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem var(--padding);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .back-button {
+      background-color: white;
+      color: var(--primary-color);
+      border: 2px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: var(--primary-color);
+      color: white;
+      border: 2px solid white;
+    }
+
+    .content {
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      padding: 0 var(--padding);
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      color: var(--primary-color);
+      margin-top: 2rem;
+      font-size: 1.25rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        padding: 0 1rem;
+      }
+
+      .back-button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-white text-black font-sans" style="font-family: 'Roboto', sans-serif;">
+<body>
+  <nav class="navbar">
+    <h1>Fncher</h1>
+    <a href="../../index.html" class="back-button">← Back</a>
+  </nav>
+  <main class="content">
+    <h2>Accessibility Statement</h2>
+    <p><em>Effective Date: May 12, 2025</em></p>
 
-  <!-- Header Section with Nav -->
-  <section class="relative bg-[#5C76A3] text-white h-[40vh] shadow-md">
-    <div class="relative z-10 flex justify-between items-center px-6 sm:px-12 pt-6">
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-wide">Fncher</h1>
-      <nav class="space-x-3 sm:space-x-6">
-        <a href="../index.html"
-           class="bg-white text-[#5C76A3] px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:bg-gray-100 transition duration-200 shadow-sm">
-          Home
-        </a>
-        <a href="contact.html"
-           class="bg-white text-[#5C76A3] px-4 py-2 rounded-lg text-sm sm:text-base font-semibold hover:bg-gray-100 transition duration-200 shadow-sm">
-          Contact
-        </a>
-      </nav>
-    </div>
+    <h3>1. Our Commitment</h3>
+    <p>Fncher is committed to making our website and services accessible to everyone, including individuals with disabilities. We strive to meet or exceed the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards.</p>
 
-    <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6">
-      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">Accessibility Statement</h2>
-      <p class="mt-2 text-sm sm:text-base font-light text-white/90">Updated as of May 2025</p>
-    </div>
-  </section>
+    <h3>2. Features</h3>
+    <ul>
+      <li>Keyboard navigable interface for all interactive elements.</li>
+      <li>Alt text for all images and descriptive link titles.</li>
+      <li>Semantic HTML and ARIA roles for screen reader compatibility.</li>
+      <li>Consistent and clear layout for ease of use.</li>
+    </ul>
 
-  <!-- Accessibility Content -->
-  <section class="py-20 px-6">
-    <div class="max-w-4xl mx-auto text-base leading-relaxed">
-      <p class="text-lg mb-6">
-        Fncher is committed to ensuring digital accessibility for all users, including those with disabilities. We are continually improving the user experience for everyone and applying relevant accessibility standards.
-      </p>
+    <h3>3. Ongoing Efforts</h3>
+    <p>We continuously test our website for accessibility issues and make improvements as technology evolves. Our development process includes regular audits and user feedback integration.</p>
 
-      <div class="space-y-8">
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">1. Our Commitment</h3>
-          <p>We aim to make our platform as accessible as possible. Our design and development practices incorporate accessibility principles aligned with the WCAG 2.1 AA guidelines.</p>
-        </div>
+    <h3>4. Assistive Technology</h3>
+    <p>Fncher is compatible with screen readers, voice recognition software, and other assistive technologies. We aim to support the most commonly used systems to ensure a smooth experience for all users.</p>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">2. Accessibility Features</h3>
-          <p>Fncher includes features such as keyboard navigation, screen reader support, color contrast considerations, and responsive layouts to improve usability for all users.</p>
-        </div>
+    <h3>5. Need Assistance?</h3>
+    <p>If you have difficulty accessing any part of our site or have suggestions for improvement, please contact us:</p>
+    <ul>
+      <li>Email: <a href="mailto:contactfncher@gmail.com">contactfncher@gmail.com</a></li>
+      <li>We will do our best to accommodate your needs and respond within a reasonable timeframe.</li>
+    </ul>
 
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">3. Ongoing Efforts</h3>
-          <p>We regularly test and update our website to ensure continued compliance and accessibility improvements as technology and standards evolve.</p>
-        </div>
-
-        <div>
-          <h3 class="text-2xl font-bold text-[#5C76A3]">4. Feedback & Contact</h3>
-          <p>If you experience any difficulty accessing content on our site or have suggestions for improvement, please contact us at <a href="mailto:accessibility@fncher.com" class="text-[#5C76A3] underline">accessibility@fncher.com</a>. We value your input and will respond promptly.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white text-center py-6">
-    <div class="space-x-6 mb-4">
-      <a href="terms.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Terms</a>
-      <a href="privacy.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Privacy</a>
-      <a href="contact.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Contact</a>
-      <a href="accessibility.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Accessibility</a>
-    </div>
-    <p class="text-sm">&copy; 2025 Fncher™. All Rights Reserved.</p>
-  </footer>
-
+    <h3>6. Future Improvements</h3>
+    <p>We are committed to ongoing improvements to ensure full accessibility for all users. Feedback and input are always welcome as we strive to enhance our user experience.</p>
+  </main>
 </body>
 </html>
