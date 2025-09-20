@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fncher – Trusted Home Experts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fncher – Coming Soon</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="Fncherlogo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Roboto', sans-serif;
     }
-
     .navbar {
       background-color: #5C76A3;
       color: white;
@@ -20,260 +19,55 @@
       justify-content: flex-start;
       align-items: center;
     }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 50;
-    }
-
-    .overlay.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .login-card {
-      background-color: white;
-      color: black;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-      margin-top: 50px;
-      position: relative;
-    }
-
-    .login-card h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .input-field {
-      background-color: #f5f5f5;
-      color: #5C76A3;
-      border: 1px solid #5C76A3;
-      padding: 12px;
-      width: 100%;
-      margin-bottom: 20px;
-      border-radius: 8px;
-    }
-
-    .input-field:focus {
-      outline: none;
-      border-color: #5C76A3;
-    }
-
-    .btn-submit {
-      background-color: #5C76A3;
-      color: white;
-      padding: 12px;
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .btn-submit:hover {
-      background-color: #4A5E7B;
-    }
-
-    .link-text {
-      font-size: 1rem;
-      color: #5C76A3;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .link-text:hover {
-      text-decoration: underline;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
-      cursor: pointer;
-      color: #5C76A3;
-      font-weight: bold;
-    }
   </style>
 </head>
 <body class="bg-white text-black">
 
-<!-- Password Protection -->
-<script>
-  const correctPassword = 'Avery2010';
+  <!-- Hero Section -->
+  <section class="relative h-[80vh] bg-cover bg-center text-white" style="background-image: url('images/network-connections-banner.jpg'); background-attachment: fixed;">
+    <div class="absolute inset-0 bg-black bg-opacity-80 z-0"></div>
 
-  function promptForPassword() {
-    const password = prompt('Please enter the password to view the site:');
-    if (password !== correctPassword) {
-      alert('Incorrect password!');
-      window.location = 'about:blank'; // Redirect to a blank page if incorrect
-    }
-  }
-
-  promptForPassword();
-</script>
-
-<!-- Hero Section -->
-<section class="relative h-[80vh] bg-cover bg-center text-white" style="background-image: url('images/network-connections-banner.jpg'); background-attachment: fixed;">
-  <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
-
-  <div class="relative z-10 flex justify-between items-center px-6 sm:px-10 pt-6">
-    <h1 class="text-4xl sm:text-5xl font-bold text-white tracking-wide">Fncher</h1>
-    <div class="space-x-4">
-      <button onclick="showLoginOverlay()" class="bg-white text-[#5C76A3] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100">Log In</button>
-      <button onclick="showSignupOverlay()" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg font-semibold hover:bg-white hover:text-[#5C76A3]">Sign Up</button>
+    <div class="relative z-10 flex justify-between items-center px-6 sm:px-10 pt-6">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-wide">Fncher</h1>
     </div>
-  </div>
 
-  <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6">
-    <h2 class="text-4xl sm:text-6xl font-extrabold leading-tight max-w-4xl">
-      Homeowners, Meet Verified Local Experts
-    </h2>
-    <p class="text-lg sm:text-xl mt-6 max-w-2xl leading-relaxed">
-      Need help while you're away? <strong>Fncher connects homeowners with licensed, trusted real estate agents</strong> who provide home care, pet sitting, and more—so you can leave with confidence.
-    </p>
-    <a href="javascript:void(0);" onclick="showLoginOverlay()" class="mt-10 inline-block bg-[#5C76A3] text-white px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:bg-white hover:text-[#5C76A3] hover:shadow-xl transition duration-300 ease-in-out">
-      Book Your Expert
-    </a>
-  </div>
-</section>
-
-<!-- Benefits Section -->
-<section class="py-20 px-6 bg-[#5C76A3] text-center text-white">
-  <div class="max-w-4xl mx-auto">
-    <h3 class="text-4xl font-bold">Why Homeowners Love Fncher</h3>
-    <p class="text-lg mt-6">
-      Whether you're traveling or just need an extra hand, our <strong>verified real estate professionals</strong> offer trusted home services. From home check-ins to pet sitting, we've got you covered—<strong>all with the reliability of licensed agents.</strong>
-    </p>
-  </div>
-</section>
-
-<!-- Services Grid -->
-<section class="bg-gray-50 py-20 px-6">
-  <div class="max-w-6xl mx-auto">
-    <h3 class="text-4xl font-bold text-center text-[#5C76A3] mb-12">What We Offer</h3>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">House Sitting & Home Checks</h4>
-        <p>Quick walkthroughs to ensure everything is safe, secure, and in order.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Mail & Package Collection</h4>
-        <p>We bring in mail and packages so nothing piles up or gets stolen.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Trash Bin Takeout & Return</h4>
-        <p>Take bins to the curb on pickup day and return them afterward.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Dog Walking & Pet Sitting</h4>
-        <p>Daily walks, feeding, and care for your pets while you're gone.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Watering Plants</h4>
-        <p>We’ll keep your indoor and outdoor plants healthy and happy.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Storm Prep & Property Watch</h4>
-        <p>Secure items, inspect damage after storms, and send updates.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-2 text-[#5C76A3]">Grocery Restock</h4>
-        <p>Restock basics like milk, eggs, and bread before you return home.</p>
-      </div>
+    <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6 max-w-4xl mx-auto">
+      <h2 class="text-4xl sm:text-6xl font-extrabold leading-tight">
+        Coming Soon
+      </h2>
+      <p class="text-lg sm:text-xl mt-6 leading-relaxed">
+        Effortless home care for homeowners: Secure check-ins, pet sitting, plant watering, mail handling, and more—while you're away. Launching soon!
+      </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section class="bg-[#5C76A3] text-white text-center py-24 px-6">
-  <h3 class="text-4xl font-bold">Start Today</h3>
-  <p class="text-lg mt-4 max-w-3xl mx-auto">
-    Whether you're a homeowner looking for trusted professionals or an agent ready to expand your business, Fncher makes it easy.
-  </p>
-  <a href="mailto:contactfncher@gmail.com" class="mt-6 inline-block bg-white text-[#5C76A3] py-3 px-6 text-xl font-semibold rounded-lg hover:bg-gray-100 transition">
-    Contact Us
-  </a>
-</section>
+  <!-- Teaser Section -->
+  <section class="py-20 px-6 bg-[#f7f9fc] text-center text-black">
+    <div class="max-w-6xl mx-auto">
+      <h3 class="text-4xl font-extrabold text-[#5C76A3] mb-6 leading-tight">
+        Peace of Mind for Homeowners
+      </h3>
+      <p class="text-lg mb-14 text-gray-700 font-medium max-w-2xl mx-auto">
+        Travel worry-free with seamless support for your home needs—trash handling, storm prep, grocery restock, and beyond.
+      </p>
+    </div>
+  </section>
 
-<!-- Footer -->
-<footer class="bg-gray-900 text-white text-center py-6">
-  <div class="space-x-6 mb-4">
-    <a href="pages/terms.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Terms</a>
-    <a href="pages/privacy.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Privacy</a>
-    <a href="pages/accessibility.html" class="bg-[#5C76A3] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Accessibility</a>
-  </div>
-  <p class="text-sm">&copy; 2025 Fncher™. All Rights Reserved.</p>
-</footer>
+  <!-- Benefits Section -->
+  <section class="py-20 px-6 bg-[#5C76A3] text-center text-white">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-4xl font-bold">Why Homeowners Will Love Fncher</h3>
+      <p class="text-lg mt-6 max-w-3xl mx-auto">
+        Unlock reliable, local solutions for everyday home tasks—ensuring security, convenience, and total confidence.
+      </p>
+    </div>
+  </section>
 
-<!-- Login Overlay -->
-<div id="loginOverlay" class="overlay">
-  <div class="login-card">
-    <span class="close-btn" onclick="hideOverlays()">×</span>
-    <h2>Log in to Your Account</h2>
-    <p class="text-sm mb-6">Not a member yet? <a href="javascript:void(0);" onclick="showSignupOverlay()" class="link-text">Create an account</a></p>
-    <form action="#" method="POST">
-      <input type="email" id="email" name="email" class="input-field" placeholder="Enter your email" required />
-      <input type="password" id="password" name="password" class="input-field" placeholder="Enter your password" required />
-      <button type="submit" class="btn-submit">Log In</button>
-    </form>
-  </div>
-</div>
-
-<!-- Signup Overlay -->
-<div id="signupOverlay" class="overlay">
-  <div class="login-card">
-    <span class="close-btn" onclick="hideOverlays()">×</span>
-    <h2>Create Your Account</h2>
-    <form action="#" method="POST">
-      <input type="text" id="name" name="name" class="input-field" placeholder="Full Name" required />
-      <input type="email" id="signup-email" name="email" class="input-field" placeholder="Email" required />
-      <input type="password" id="signup-password" name="password" class="input-field" placeholder="Password" required />
-      <div class="text-left text-sm mb-4">
-        <label class="inline-flex items-center">
-          <input type="checkbox" required class="mr-2" />
-          I agree to the
-          <a href="pages/terms.html" class="text-[#5C76A3] underline ml-1">Terms of Service</a> and
-          <a href="pages/privacy.html" class="text-[#5C76A3] underline ml-1">Privacy Policy</a>.
-        </label>
-      </div>
-      <button type="submit" class="btn-submit">Sign Up</button>
-    </form>
-  </div>
-</div>
-
-<!-- Scripts -->
-<script>
-  function showLoginOverlay() {
-    hideOverlays();
-    document.getElementById('loginOverlay').classList.add('active');
-  }
-
-  function showSignupOverlay() {
-    hideOverlays();
-    document.getElementById('signupOverlay').classList.add('active');
-  }
-
-  function hideOverlays() {
-    document.getElementById('loginOverlay').classList.remove('active');
-    document.getElementById('signupOverlay').classList.remove('active');
-  }
-</script>
-
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6">
+    <div class="space-x-6 mb-4">
+    </div>
+    <p class="text-sm">&copy; 2025 Fncher™. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
