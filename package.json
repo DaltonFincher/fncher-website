@@ -1,0 +1,26 @@
+{
+  "name": "fncher-website",
+  "version": "1.0.0",
+  "description": "Fncher - Trusted Home Experts Website",
+  "main": "index.html",
+  "scripts": {
+    "build-config": "node build-config.js",
+    "build": "npm run build-config",
+    "dev": "npm run build-config && npx serve .",
+    "start": "npm run build && npx serve .",
+    "clean": "rm -f js/config.js"
+  },
+  "keywords": [
+    "firebase",
+    "real-estate",
+    "home-services"
+  ],
+  "author": "Fncher",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

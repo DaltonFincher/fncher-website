@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fncher | Sign Up / Log In</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(270deg, #fefefe, #f8f7f5, #fdfcf9, #f5f3ef, #fcfbf7);
+      background-size: 1400% 1400%;
+      animation: gradientAnimation 30s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col text-black">
+  <!-- Navbar -->
+  <nav class="bg-[#5C76A3] text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="text-3xl font-bold tracking-wide">Fncher</h1>
+    <a href="../index.html" class="bg-white text-[#5C76A3] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">Home</a>
+  </nav>
+
+  <!-- Auth Card -->
+  <main class="flex-grow flex justify-center items-center px-6 py-16">
+    <div class="w-full max-w-md bg-[#f7f9fc] p-8 rounded-lg shadow-lg">
+      <h2 id="formTitle" class="text-3xl font-bold text-[#5C76A3] mb-4 text-center">Sign Up</h2>
+      <form id="authForm" class="space-y-5" novalidate>
+        <!-- Full Name (only in Sign Up) -->
+        <div id="nameGroup">
+          <label for="nameInput" class="block text-[#5C76A3] font-semibold mb-1">Full Name</label>
+          <input type="text" id="nameInput" class="w-full px-4 py-3 border border-[#5C76A3] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5C76A3]" placeholder="Your full name" />
+        </div>
+
+        <div>
+          <label for="emailInput" class="block text-[#5C76A3] font-semibold mb-1">Email</label>
+          <input type="email" id="emailInput" required class="w-full px-4 py-3 border border-[#5C76A3] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5C76A3]" placeholder="you@example.com" />
+        </div>
+
+        <div>
+          <label for="passwordInput" class="block text-[#5C76A3] font-semibold mb-1">Password</label>
+          <input type="password" id="passwordInput" required class="w-full px-4 py-3 border border-[#5C76A3] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5C76A3]" placeholder="Enter password" />
+        </div>
+
+        <!-- Terms (Sign Up only) -->
+        <div class="flex items-start" id="termsGroup">
+          <input type="checkbox" id="termsCheckbox" class="w-5 h-5 mt-1 text-[#5C76A3] border border-[#5C76A3] rounded focus:ring-2 focus:ring-[#5C76A3]" required />
+          <label for="termsCheckbox" class="ml-2 text-[#5C76A3] text-sm">
+            I agree to the <a href="../../pages/terms.html" class="underline hover:text-[#4A5E7B]" target="_blank">Terms of Service</a> and <a href="../../pages/privacy.html" class="underline hover:text-[#4A5E7B]" target="_blank">Privacy Policy</a>.
+          </label>
+        </div>
+
+        <div id="message" class="text-center text-sm font-semibold"></div>
+
+        <button type="submit" id="signUpButton" class="w-full bg-[#5C76A3] text-white py-3 rounded-lg font-semibold hover:bg-[#4A5E7B] transition">Sign Up</button>
+
+        <button type="button" id="toggleButton" class="w-full mt-2 text-[#5C76A3] underline hover:text-[#4A5E7B] transition">Switch to Log In</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6">
+    <p class="text-sm">© 2025 Fncher™. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+
+  <!-- Load Configuration (generated from environment variables) -->
+  <script src="../js/config.js"></script>
+
+  <script>
+    // Check if configuration is loaded
+    if (!window.FncherConfig) {
+      console.error('Configuration not loaded! Make sure to run the build script to generate config.js');
+      document.getElementById('message').textContent = 'Configuration error. Please contact support.';
+      document.getElementById('message').classList.add('text-red-600');
+    }
+
+    // Use the configuration from the loaded config file
+    const db = window.db;
+    const auth = window.auth;
+
+    const authForm = document.getElementById('authForm');
+    const signUpButton = document.getElementById('signUpButton');
+    const toggleButton = document.getElementById('toggleButton');
+    const formTitle = document.getElementById('formTitle');
+    const nameInput = document.getElementById('nameInput');
+    const emailInput = document.getElementById('emailInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const messageDiv = document.getElementById('message');
+    const nameGroup = document.getElementById('nameGroup');
+    const termsGroup = document.getElementById('termsGroup');
+    const termsCheckbox = document.getElementById('termsCheckbox');
+
+    let isSignUp = true;
+
+    toggleButton.addEventListener('click', () => {
+      isSignUp = !isSignUp;
+      formTitle.textContent = isSignUp ? 'Sign Up' : 'Log In';
+      signUpButton.textContent = isSignUp ? 'Sign Up' : 'Log In';
+      nameGroup.style.display = isSignUp ? 'block' : 'none';
+      termsGroup.style.display = isSignUp ? 'flex' : 'none';
+      messageDiv.textContent = '';
+    });
+
+    authForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      
+      // Check if Firebase is properly initialized
+      if (!window.FncherConfig || !auth || !db) {
+        messageDiv.textContent = 'Configuration error. Please try refreshing the page.';
+        messageDiv.classList.add('text-red-600');
+        return;
+      }
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+      const termsAccepted = termsCheckbox.checked;
+      messageDiv.textContent = '';
+      messageDiv.className = 'text-center text-sm font-semibold';
+
+      if (isSignUp && (!name || !email || !password)) {
+        messageDiv.textContent = 'Please complete all fields.';
+        messageDiv.classList.add('text-red-600');
+        return;
+      }
+      if (isSignUp && !termsAccepted) {
+        messageDiv.textContent = 'You must agree to the Terms and Privacy Policy.';
+        messageDiv.classList.add('text-red-600');
+        return;
+      }
+
+      try {
+        if (isSignUp) {
+          const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+          const user = userCredential.user;
+          
+          // Get the auth domain from config for email verification
+          const verificationUrl = `https://${window.FncherConfig.firebase.authDomain}/verify-email.html`;
+          await user.sendEmailVerification({ url: verificationUrl });
+          
+          await db.collection('users').doc(user.uid).set({
+            full_name: name,
+            email: email,
+            terms_accepted: termsAccepted,
+            created_at: firebase.firestore.FieldValue.serverTimestamp()
+          });
+          messageDiv.textContent = 'Signed up! Please check your email to verify.';
+          messageDiv.classList.add('text-green-600');
+          await auth.signOut();
+        } else {
+          const userCredential = await auth.signInWithEmailAndPassword(email, password);
+          const user = userCredential.user;
+          if (!user.emailVerified) {
+            await auth.signOut();
+            throw new Error('Please verify your email before logging in.');
+          }
+
+          // Check if user exists in users collection
+          const userDoc = await db.collection('users').doc(user.uid).get();
+          if (!userDoc.exists) {
+            await auth.signOut();
+            throw new Error('No user account found. Please sign up as a user.');
+          }
+
+          // Check if user exists in agents collection
+          const agentDoc = await db.collection('agents').doc(user.uid).get();
+          if (agentDoc.exists) {
+            await auth.signOut();
+            throw new Error('Agent accounts cannot log in here. Please use the agent portal.');
+          }
+
+          messageDiv.textContent = 'Logged in successfully!';
+          messageDiv.classList.add('text-green-600');
+          window.location.href = 'userfeed.html';
+        }
+        authForm.reset();
+      } catch (error) {
+        console.error('Auth error:', error);
+        messageDiv.textContent = `Error: ${error.message}`;
+        messageDiv.classList.add('text-red-600');
+      }
+    });
+
+    auth.onAuthStateChanged(async (user) => {
+      if (user && user.emailVerified && !isSignUp) {
+        try {
+          const userDoc = await db.collection('users').doc(user.uid).get();
+          const agentDoc = await db.collection('agents').doc(user.uid).get();
+          if (userDoc.exists && !agentDoc.exists) {
+            window.location.href = 'userfeed.html';
+          } else {
+            await auth.signOut();
+            messageDiv.textContent = 'Agent accounts cannot log in here. Please use the agent portal.';
+            messageDiv.classList.add('text-red-600');
+          }
+        } catch (error) {
+          console.error('Error checking user status:', error);
+          messageDiv.textContent = `Error: ${error.message}`;
+          messageDiv.classList.add('text-red-600');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
